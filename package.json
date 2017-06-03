@@ -1,0 +1,37 @@
+{
+  "name": "planeshift",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": "70-10/planeshift",
+  "keywords": [],
+  "author": {
+    "name": "70_10",
+    "email": "7010.dev@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "caporal": "^0.6.0",
+    "co": "^4.6.0",
+    "download-git-repo": "^1.0.1",
+    "fs-extra": "^3.0.1",
+    "log-symbols": "^1.0.2",
+    "ora": "^1.2.0",
+    "rimraf": "^2.6.1",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-prettier": "^2.1.1",
+    "prettier": "^1.4.1"
+  }
+}
