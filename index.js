@@ -5,12 +5,12 @@ const pkg = require("./package.json");
 const readline = require("readline");
 const co = require("co");
 const ora = require("ora");
-const downloadGitRepository = require("download-git-repo");
 const path = require("path");
 const fs = require("fs-extra");
 const rm = require("rimraf").sync;
 const logSymbols = require("log-symbols");
 const home = require("user-home");
+const download = require("./lib/download");
 
 prog
   .version(pkg.version)
@@ -38,7 +38,12 @@ function action(args, options, logger) {
     if (fs.existsSync(tmpPath)) {
       rm(tmpPath);
     }
+
+    const spinner = ora(`Download ${args.app}`);
+    spinner.start();
     yield download(args.app, tmpPath);
+    spinner.stop();
+
     logger.info(logSymbols.success, "Download is success");
     fs.copySync(tmpPath, destPath);
     rm(tmpPath);
@@ -56,21 +61,6 @@ function askProject() {
     rl.question("Please project name: ", answer => {
       rl.close();
       resolve(answer);
-    });
-  });
-}
-
-function download(repository, dirPath) {
-  const spinner = ora(`Download ${repository}`);
-  spinner.start();
-  return new Promise((resolve, reject) => {
-    downloadGitRepository(repository, dirPath, err => {
-      spinner.stop();
-      if (err) {
-        reject("Download is failed");
-        return;
-      }
-      resolve();
     });
   });
 }
