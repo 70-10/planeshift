@@ -30,7 +30,7 @@ function action(args, options, logger) {
     const destPath = args.path
       ? path.join(process.cwd(), args.path)
       : process.cwd();
-    if (args.path && fs.existsSync(destPath)) {
+    if (destPath !== process.cwd() && args.path && fs.existsSync(destPath)) {
       throw `${destPath} alredy exists`;
     }
 
