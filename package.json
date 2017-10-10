@@ -2,13 +2,15 @@
   "name": "planeshift",
   "version": "0.2.0",
   "description": "",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "lib/index.js",
+  "bin": "lib/index.js",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
-    "lint": "eslint ."
+    "build": "babel src/ -d lib/",
+    "lint": "eslint src/",
+    "clean": "rimraf lib"
   },
   "repository": "70-10/planeshift",
   "keywords": [],
@@ -28,6 +30,12 @@
     "user-home": "^2.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-node": "^5.2.0",
